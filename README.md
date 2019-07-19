@@ -3,38 +3,33 @@ ReadMe
 一、基本环境搭建
 
 1.创建用户并赋予sudo权限（需root）
-
 ./createuser.sh
 
-2.中转机初始化jenkins、ansible环境
 
+2.中转机初始化jenkins、ansible环境
 使用tq用户登录并执行./preinit.sh
 
-3.分发密钥，首次需要输入tq密码：“tq”
 
+3.分发密钥，首次需要输入tq密码：“tq”
 ssh-copy-id -i ~/.ssh/id_rsa.pub tq@主机1_IP
 ssh-copy-id -i ~/.ssh/id_rsa.pub tq@主机2_IP
 
-4.部署本地git服务器并创建代码库与Jenkinsfile关联
 
+4.部署本地git服务器并创建代码库与Jenkinsfile关联
 ./mygit.sh
 
+
 5配置主机列表/etc/ansible/hosts
-
 [prd]
-
 主机1_IP
 
 [test]
-
 主机2_IP
 
 [deploy]
-
 localhost
 
 6.应用首次部署
-
 ansible-playbook yaml/build.yaml 
 
 
