@@ -1,0 +1,12 @@
+---
+- hosts: prd
+  remote_user: tq
+  tasks:
+  - name: "delete the war"
+    command: "sudo rm -rf /home/tq/tomcat/webapps"
+  - name: "mkdir webapps"
+    command: "mkdir -p /home/tq/tomcat/webapps"
+  - name: "copy the war"
+    copy: "src=/home/tq/tomcat/hello/hello.war dest=/home/tq/tomcat/webapps/"
+  - name: "restart tomcat container"
+    shell: "sudo docker restart $(sudo docker ps -a|grep my-tomcat|awk '{print $1}')"

@@ -1,0 +1,10 @@
+---
+- hosts: prd
+  remote_user: tq
+  tasks:
+  - name: "copy files to remote host"
+    copy: src=/home/tq/mywork/initenv.tar dest=/home/tq/initenv.tar
+  - name: "tar file"
+    shell: "tar xvf /home/tq/initenv.tar"
+  - name: "initial envirement"
+    shell: "sh /home/tq/init.sh"
